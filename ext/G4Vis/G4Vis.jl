@@ -94,7 +94,7 @@ module G4Vis
                 points = GeometryBasics.coordinates(m)
                 faces  = GeometryBasics.faces(m)
                 map!(c -> c * t, points, points)
-                m = GeometryBasics.Mesh(meta(points; normals=normals(points, faces)), faces)
+                m = GeometryBasics.Mesh(GeometryBasics.meta(points; normals=normals(points, faces)), faces)
             end
             color = g4vis != C_NULL ? convert(Tuple{RGB, Float64}, GetColour(g4vis)) : (colors[level], GetDensity(GetMaterial(lv))/(12g/cm3))
             visible = g4vis != C_NULL ? IsVisible(g4vis) : true
